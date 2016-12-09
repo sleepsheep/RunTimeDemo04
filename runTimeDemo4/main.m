@@ -116,7 +116,7 @@ void *createAppDelegate() {
     SEL selName = sel_registerName("application:didFinishLaunchingWithOptions:");
     class_addMethod(mySubclass, selName, (void (*))applicationdidFinishLaunching, nil);
     objc_registerClassPair(mySubclass);
-    return objc_msgSend(object_getClass(@"NNString"), sel_registerName("stringWithUTF8String:"), "AppDelegate");
+    return objc_msgSend(object_getClass(@"NSString"), sel_registerName("stringWithUTF8String:"), "AppDelegate");
 }
 
 int main(int argc, char *argv[]) {
