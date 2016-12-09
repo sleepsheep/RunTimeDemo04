@@ -113,7 +113,7 @@ void applicationdidFinishLaunching(void *receiver, struct objc_selector *selecto
 //create an class named "AppDelegate", and return its name as an instance of class NSString
 void *createAppDelegate() {
     Class mySubclass = objc_allocateClassPair((Class)object_getClass(@"NSObject"), "AppDelegate", 0);
-    struct objc_selector *selName = sel_registerName("application:didFinishLaunchingWithOptions:");
+    SEL selName = sel_registerName("application:didFinishLaunchingWithOptions:");
     class_addMethod(mySubclass, selName, (void (*))applicationdidFinishLaunching, nil);
     objc_registerClassPair(mySubclass);
     return objc_msgSend(object_getClass(@"NNString"), sel_registerName("stringWithUTF8String:"), "AppDelegate");
