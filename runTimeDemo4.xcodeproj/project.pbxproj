@@ -207,6 +207,7 @@
 				TargetAttributes = {
 					9F7A18E91CA5943000EFD4A5 = {
 						CreatedOnToolsVersion = 7.2;
+						DevelopmentTeam = 6M6YBBYHVY;
 					};
 					9F7A19021CA5943100EFD4A5 = {
 						CreatedOnToolsVersion = 7.2;
@@ -416,6 +417,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_OBJC_ARC = NO;
+				DEVELOPMENT_TEAM = 6M6YBBYHVY;
 				ENABLE_STRICT_OBJC_MSGSEND = NO;
 				INFOPLIST_FILE = runTimeDemo4/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -432,6 +434,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_OBJC_ARC = NO;
+				DEVELOPMENT_TEAM = 6M6YBBYHVY;
 				ENABLE_STRICT_OBJC_MSGSEND = NO;
 				INFOPLIST_FILE = runTimeDemo4/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;

@@ -6,7 +6,7 @@
 //  Copyright © 2016年 LY. All rights reserved.
 //
 
-//#import <UIKit/UIKit.h>
+#import <UIKit/UIKit.h>
 //#import "AppDelegate.h"
 
 //int main(int argc, char * argv[]) {
@@ -21,13 +21,13 @@
 
 extern int MyUIApplicationMain(int argc, char *argv[], void *principalClassName, void *delegateClassName);
 
-struct MyRect {
-    float x;
-    float y;
-    float width;
-    float height;
-};
-typedef struct MyRect MyRect;
+//struct Rect {
+//    float x;
+//    float y;
+//    float width;
+//    float height;
+//};
+typedef struct Rect MyRect;
 
 void *navController;
 static int numberOfRows = 100;
@@ -84,10 +84,10 @@ void *createDelegate() {
 
 //自定义主函数
 void applicationdidFinishLaunching(void *receiver, struct objc_selector *selector, void *application) {
-    Class windowClass = (Class)object_getClass(@"UIWindow");
-    void *windowInstance = class_createInstance(windowClass, 0);
-    
-    objc_msgSend(windowClass, sel_registerName("initWithFrame:"), (MyRect){0, 0, 320, 480});
+    Class windowClass = (Class)object_getClass([UIWindow class]);
+    id windowInstance = class_createInstance(windowClass, 0);
+
+    objc_msgSend(windowInstance, sel_registerName("initWithFrame:"), (MyRect){0, 0, 320, 480});
     
     //make key and visiable
     objc_msgSend(windowInstance, sel_registerName("makeKeyAndVisible"));
@@ -107,18 +107,24 @@ void applicationdidFinishLaunching(void *receiver, struct objc_selector *selecto
     
     //add TableView to window
     objc_msgSend(windowInstance, sel_registerName("addSubview:"), view);
-    
 }
 
 //create an class named "AppDelegate", and return its name as an instance of class NSString
 void *createAppDelegate() {
-    Class mySubclass = objc_allocateClassPair((Class)object_getClass(@"NSObject"), "AppDelegate", 0);
+    const char *className = [@"MyAppDelegate" cStringUsingEncoding:NSASCIIStringEncoding];
+    Class mySubclass = objc_allocateClassPair([NSObject class], className, 0);
     SEL selName = sel_registerName("application:didFinishLaunchingWithOptions:");
     class_addMethod(mySubclass, selName, (void (*))applicationdidFinishLaunching, nil);
     objc_registerClassPair(mySubclass);
-    return objc_msgSend(object_getClass(@"NSString"), sel_registerName("stringWithUTF8String:"), "AppDelegate");
+    return objc_msgSend(objc_getClass("NSString"),sel_registerName("stringWithUTF8String:"),"MyAppDelegate");
 }
 
-int main(int argc, char *argv[]) {
-    return MyUIApplicationMain(argc, argv, 0, createAppDelegate());
+//int main(int argc, char *argv[]) {
+//    return MyUIApplicationMain(argc, argv, 0, createAppDelegate());
+//}
+
+int main(int argc, char * argv[]) {
+    @autoreleasepool {
+        return UIApplicationMain(argc, argv, nil, createAppDelegate());
+    }
 }
