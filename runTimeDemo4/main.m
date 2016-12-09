@@ -6,7 +6,6 @@
 //  Copyright © 2016年 LY. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
 //#import "AppDelegate.h"
 
 //int main(int argc, char * argv[]) {
@@ -15,6 +14,7 @@
 //    }
 //}
 
+#import <UIKit/UIKit.h>
 #import <objc/runtime.h>
 #import <objc/message.h>
 #import <stdio.h>
@@ -124,7 +124,7 @@ void *createAppDelegate() {
 //}
 
 int main(int argc, char * argv[]) {
-    @autoreleasepool {
+//    @autoreleasepool {
         return UIApplicationMain(argc, argv, nil, createAppDelegate());
-    }
+//    }
 }
